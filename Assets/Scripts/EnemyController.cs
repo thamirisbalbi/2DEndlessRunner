@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour
         if (transform.position.x <= -9.36)
         {
             gameObject.SetActive(false);
+
         }
     }
 }
