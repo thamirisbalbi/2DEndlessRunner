@@ -33,7 +33,8 @@ public class SpawnerController : MonoBehaviour
             {
                 obj.transform.position = transform.position;
                 txSpawnAtual = Mathf.Max(txSpawnAtual - aumentoSpawn, spawnMin);//diminui intervalo de spawn ao aumentar spawn rate
-                timer = 0; //reseta timer
+                //se a subtração retornar menor que o min, sempre retorno o min(que sera o valor max)
+                timer = 0; //reseta timer 
 
             }
         }
