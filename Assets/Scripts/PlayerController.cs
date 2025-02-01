@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float gravity;
     [SerializeField] private float impulse; //afeta vel em y
     private float x;
-    private bool isPressed; //controle de bug: não andar com ambas as teclas pressionadas //resolvido
+    private bool isPressed; //controle de bug: não andar com ambas as teclas pressionadas 
     private bool jumping;
     private float ground;
     private float yVel;
