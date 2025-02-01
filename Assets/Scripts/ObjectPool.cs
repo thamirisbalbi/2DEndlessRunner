@@ -3,34 +3,58 @@ using System.Collections.Generic;
 
 public class ObjectPool
 {
-    private GameObject prefab;
+    private GameObject[] prefabs;
     private Queue<GameObject> queue;
     private int poolSize;
 
 
     public ObjectPool(GameObject prefab, int poolSize)
     {
-        this.prefab = prefab;
+        this.prefabs = new GameObject[] { prefab }; //no caso de ser apenas um prefab
         this.poolSize = poolSize;
         queue = new Queue<GameObject>();
+        InitializePool();
+    }
+
+    public ObjectPool(GameObject[] prefabs, int poolSize) //mais de um prefab
+    {
+        this.prefabs = prefabs;
+        this.poolSize = poolSize;
+        InitializePool();
+    }
+    private void InitializePool()
+    {
+        queue = new Queue<GameObject>();
+
         for (int i = 0; i < this.poolSize; i++)
         {
-            GameObject obj = Object.Instantiate(prefab);
+            //Escolhe prefab aleatorio do array
+            GameObject randomPrefab = prefabs[Random.Range(0, prefabs.Length)];
+
+            GameObject obj = Object.Instantiate(randomPrefab);
             obj.SetActive(false);
             queue.Enqueue(obj);
         }
     }
-
     public GameObject GetFromPool()
     {
         GameObject obj = queue.Peek();
-        if (obj.activeSelf)
-            return null;
-        queue.Dequeue();
-        queue.Enqueue(obj);
-        obj.SetActive(true);
-        return obj;
+        if (!obj.activeSelf) //se ativo não ira ser regenerado
+        {
+            queue.Dequeue(); //se nao ativo, remove do inicio da fila
+            queue.Enqueue(obj); //coloca obj no fim da fila
+            obj.SetActive(true); //coloca obj como ativo 
+            return obj;
+        }
+        return null;
     }
 
+    public void ReturnToPool(GameObject obj)
+    {
+        obj.SetActive(false);
+    }
+
+
+
 }
-}
+
