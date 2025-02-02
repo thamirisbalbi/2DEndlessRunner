@@ -166,7 +166,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 6996678768149899948, guid: 23919d6d69e18614c86f04b28575cd0d, type: 3}
   minRange: -1.74
   maxRange: 1
-  spawnTime: 5
+  spawnTime: 9
   poolSize: 5
   timer: 0
 --- !u!1 &519420028
@@ -309,7 +309,7 @@ MonoBehaviour:
   - {fileID: 6052423941254288517, guid: 92886f48eb3619643abe39fa8cd4fc9b, type: 3}
   - {fileID: 2271613268184617258, guid: e3ce84f54d3ca1142aba15802b14b7d5, type: 3}
   txSpawnInicial: 6
-  poolSize: 5
+  poolSize: 10
   spawnMin: 3
 --- !u!1 &1695919263
 GameObject:
