@@ -34,6 +34,7 @@ public class ObjectPool
             GameObject obj = Object.Instantiate(randomPrefab);
             obj.SetActive(false);
             queue.Enqueue(obj);
+            //objetivo: fila instanciada aleatoriamente a partir dos dois prefabs
         }
     }
     public GameObject GetFromPool()
@@ -49,10 +50,6 @@ public class ObjectPool
         return null;
     }
 
-    public void ReturnToPool(GameObject obj)
-    {
-        obj.SetActive(false);
-    }
 
 
 

@@ -12,7 +12,7 @@ public class SpawnerController : MonoBehaviour
 
     void Start()
     {
-        enemyPool = new ObjectPool(enemyPrefab, 5);
+        enemyPool = new ObjectPool(enemyPrefab, 10);
         timer = 0;
         txSpawnAtual = txSpawnInicial;
     }
@@ -20,11 +20,6 @@ public class SpawnerController : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-
-        if (txSpawnAtual - aumentoSpawn < spawnMin)
-        {
-            txSpawnAtual = txSpawnInicial; //reseta dificuldade ao longo do tempo, se chegar no min possivel com os valores setados
-        }
 
         if (timer >= txSpawnAtual)
         {
@@ -38,6 +33,12 @@ public class SpawnerController : MonoBehaviour
 
             }
         }
+        if (txSpawnAtual == spawnMin)
+        {
+            txSpawnAtual = Random.Range(txSpawnInicial, spawnMin); //-1
+            timer = 0;
+        } //variando tx spawn atual
+        Debug.Log("Taxa de spawn atual: " + txSpawnAtual);
     }
-
+    //if enemypool
 }
