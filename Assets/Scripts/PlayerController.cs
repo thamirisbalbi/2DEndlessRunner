@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
         jumping = false;
         yVel = 0;
 
+
     }
 
     void Update()

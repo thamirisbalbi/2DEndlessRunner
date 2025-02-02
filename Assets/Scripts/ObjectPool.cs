@@ -40,7 +40,7 @@ public class ObjectPool
     public GameObject GetFromPool()
     {
         GameObject obj = queue.Peek();
-        if (!obj.activeSelf) //se ativo não ira ser regenerado
+        if (!obj.activeSelf)
         {
             queue.Dequeue(); //se nao ativo, remove do inicio da fila
             queue.Enqueue(obj); //coloca obj no fim da fila
